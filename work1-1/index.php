@@ -1,7 +1,7 @@
 <?php 
 $currentUrl = $_SERVER['REQUESR_URI'];
-if(isset($_POST['ans'])){
-    $judge = $_POST['ans'] === '東京'? '正解':'不正解';
+if(isset($_POST['answer'])){
+    $judge = $_POST['answer'] === '東京'? '正解':'不正解';
 }
 ?>
 <!DOCTYPE html>
@@ -14,8 +14,8 @@ if(isset($_POST['ans'])){
 </head>
 <body>
     <div>日本の首都は？</div>
-    <form action="<?php echo $currentUrl; ?>" method="POST">
-    <input type="text" name="ans">
+    <form method="POST">
+    <input type="text" name="answer">
     <input type="submit" value="OK">
     </form>
     <?php if(!empty($judge)){
