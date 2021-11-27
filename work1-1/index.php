@@ -1,5 +1,4 @@
 <?php 
-$currentUrl = $_SERVER['REQUESR_URI'];
 if(isset($_POST['answer'])){
     $judge = $_POST['answer'] === '東京'? '正解':'不正解';
 }
