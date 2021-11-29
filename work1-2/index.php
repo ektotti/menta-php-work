@@ -1,3 +1,4 @@
+develop
 <?php
 $fruits = ['apple', 'orange', 'strawberry'];
 
@@ -32,3 +33,6 @@ function judge($answer, $fruits){
     ?>
 </body>
 </html>
+=======
+index.php
+master
