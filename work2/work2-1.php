@@ -51,7 +51,8 @@ function playFizzBuzz($fizzNum,$buzzNum){
     // 出力が小さい順になるようにソート。
     sort($unionNum);
 
-
+    // $unionNumを出力するループ処理。
+    // 剰余算でfizz,buzz,fizzbuzzを条件分岐。
     foreach($unionNum as $outputnum){
         if($outputnum % $fizzNum === 0 && $outputnum % $buzzNum === 0){
 
@@ -67,18 +68,24 @@ function playFizzBuzz($fizzNum,$buzzNum){
 
         }
     }
-
 }
 
+// formで入力された値のチェックをする関数。
 function checkValFromForm($fizzNum, $buzzNum){
     $isOk = false;
     
     if(empty($fizzNum)|empty($buzzNum)){
+
         echo '値を入力して下さい';
+
     }elseif(is_float($fizzNum)|is_float($buzzNum)){
+
         echo '整数値を入力して下さい';
+
     }elseif(is_string($fizzNum)){
+
         echo '整数値を入力して下さい';
+
     }else{
         $isOk = true;
     }
@@ -86,5 +93,4 @@ function checkValFromForm($fizzNum, $buzzNum){
     return $isOk;
 
 }
-
 ?>
