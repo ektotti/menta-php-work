@@ -33,41 +33,24 @@ function playFizzBuzz($fizzNum,$buzzNum){
         return;
     }
 
-    // 2つのループ処理で$unionNumに$fizzNumと$buzzNumの
-    // 和集合を配列として保持。
-    
-    for($i = 1; $i < 100 / $fizzNum; $i++){
-        $unionNum[]=$fizzNum * $i;
-    }
-    
-    for($i = 1; $i < 100 / $buzzNum; $i++){
-        if(in_array($buzzNum * $i, $unionNum)){
-            continue;
-        }else{
-            $unionNum[]=$buzzNum * $i;  
-        }
-    }
-    
-    // 出力が小さい順になるようにソート。
-    sort($unionNum);
+    // ループカウンタ変数を１〜100で設定して、入力されたfizzNumとbuzzNumで剰余算を行う
+    // 割り切れる数を出力。fizzNumとbuzzNum両方で割り切れる場合はfizzbuzzとする。
+    for($i = 1; $i < 100; $i++){
+        if($i % $fizzNum === 0 && $i % $buzzNum === 0){
 
-    // $unionNumを出力するループ処理。
-    // 剰余算でfizz,buzz,fizzbuzzを条件分岐。
-    foreach($unionNum as $outputnum){
-        if($outputnum % $fizzNum === 0 && $outputnum % $buzzNum === 0){
+            echo "fizzbuzz {$i}<br>";
 
-            echo "fizzbuzz {$outputnum}<br>";
+        }elseif($i % $fizzNum === 0){
 
-        }elseif($outputnum % $fizzNum === 0){
+            echo "fizz {$i}<br>";
 
-            echo "fizz {$outputnum}<br>";
+        }elseif($i % $buzzNum === 0){
 
-        }elseif($outputnum % $buzzNum === 0){
-
-            echo "buzz {$outputnum}<br>";
+            echo "buzz {$i}<br>";
 
         }
     }
+    
 }
 
 // formで入力された値のチェックをする関数。
