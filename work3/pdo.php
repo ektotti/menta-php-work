@@ -29,6 +29,5 @@ function fetchAll() {
     $statement = $db->prepare('select * from test_bbs.post;');
     $statement->execute();
     return $statement->fetchAll();
-    
 }
 ?>
