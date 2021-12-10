@@ -4,7 +4,7 @@ require_once 'pdo.php';
 require_once 'info.php';
 
 // formから値が飛んできているかチェック。
-if(empty($_POST['name']) | empty($_POST['postContent'])) {
+if(!isset($_POST['type'])) {
     header('location:index.php');
     return;
 }
@@ -13,9 +13,17 @@ if(empty($_POST['name']) | empty($_POST['postContent'])) {
 if($_POST['type']==='投稿') {
     $name = $_POST['name'];
     $content = $_POST['postContent'];
+    $id = uniqid();
    
-    \db\insert($name, $content);
+    \db\insert($id, $name, $content);
     
     \info\info("投稿が完了しました");
+}
+if($_POST['type']==='削除') {
+    $id = $_POST['id'];
+   
+    \db\delete($id);
+    
+    \info\info("削除が完了しました");
 }
 ?>

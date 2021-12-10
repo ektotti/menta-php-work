@@ -6,19 +6,30 @@ function createDatabase() {
     $db = new PDO('mysql:host = localhost;','root','root');
     $db->exec('CREATE DATABASE IF NOT EXISTS test_bbs;');
     $db->exec('CREATE TABLE IF NOT EXISTS test_bbs.post(
-    `id` int auto_increment primary key,
+    `id` varchar(13) primary key,
     `name` VARCHAR(10) default "root" ,
     `content` VARCHAR(140) NOT NULL);
     ');
 }
 
-function insert($name, $content) {
+function insert($id, $name, $content) {
     $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
-    $statement = $db->prepare('insert into test_bbs.post(`name`, `content`) values(:name, :content); ');
+    $statement = $db->prepare('insert into test_bbs.post(`id`,`name`, `content`) values(:id, :name, :content);');
     $statement->execute(
         [
+            ':id'=>$id,
             ':name'=>$name,
-            ':content'=>$content
+            ':content'=>$content,
+        ]
+        );
+}
+
+function delete($id) {
+    $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
+    $statement = $db->prepare('delete from post where id = :id; ');
+    $statement->execute(
+        [
+            ':id'=>$id
         ]
         );
 }
