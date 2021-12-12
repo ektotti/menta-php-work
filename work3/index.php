@@ -33,7 +33,7 @@ db\createDatabase();
                     <label for="postContent" style="display:block;">投稿:</label>
                     <textarea name="postContent" id="postContent" cols="30" rows="10"></textarea>
                 </div>
-                <input type="submit" name="type" value="投稿">
+                <input type="submit" name="create" value="投稿">
             </form>
         </section>
         <section clas="show">
@@ -49,7 +49,7 @@ db\createDatabase();
                     <li><?php echo "投稿内容:".$posts[$i]['content'] ?></li>
                     <form action="controller.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $posts[$i]['id']; ?>">
-                        <input type="submit" name="type" value="削除">
+                        <input type="submit" name="delete" value="削除">
                     </form>
                 </ul>
                 <?php endfor; ?>
