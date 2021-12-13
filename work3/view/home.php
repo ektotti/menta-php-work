@@ -20,9 +20,11 @@ function home($fromEdit = false, $editedPost = []) {?>
     </head>
     <body>
     <h1>掲示板</h1>
-
+    
+    <?php //form関数の中で投稿と更新の画面を出し分ける。$fromEditをフラグとする。 ?>
     <?php \view\form($fromEdit, $editedPost) ?>
 
+    <?php //更新の画面では必要ないので条件分岐で出し分け ?>
     <?php if(!$fromEdit): ?> 
         <section clas="show">
             <h2>投稿内容一覧</h2>

@@ -9,6 +9,7 @@ db\createDatabase();
 
 <?php 
 
+// 画面を関数として呼び出すように変更。
 \view\home();
 
 ?>

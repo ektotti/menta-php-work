@@ -2,6 +2,7 @@
 namespace view;
 ?>
 
+<?php //投稿と更新で画面の状態を条件分岐する ?>
 <?php function form($fromEdit, $editedPost) {
 $title = $fromEdit? "編集ページ":"新規投稿";
 $subimitName = $fromEdit? "update":"create";
