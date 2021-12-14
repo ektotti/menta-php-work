@@ -14,7 +14,7 @@ function createDatabase() {
 
 function insert($id, $name, $content) {
     $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
-    $statement = $db->prepare('insert into test_bbs.post(`id`,`name`, `content`) values(:id, :name, :content);');
+    $statement = $db->prepare('INSERT INTO test_bbs.post(`id`,`name`, `content`) values(:id, :name, :content);');
     $statement->execute(
         [
             ':id'=>$id,
@@ -26,7 +26,7 @@ function insert($id, $name, $content) {
 
 function delete($id) {
     $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
-    $statement = $db->prepare('delete from post where id = :id; ');
+    $statement = $db->prepare('DELETE FROM post WHERE id = :id; ');
     $statement->execute(
         [
             ':id'=>$id
@@ -37,8 +37,30 @@ function delete($id) {
 function fetchAll() {
     $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $statement = $db->prepare('select * from test_bbs.post;');
+    $statement = $db->prepare('SELECT * FROM test_bbs.post;');
     $statement->execute();
     return $statement->fetchAll();
+}
+
+function fetchById($id) {
+    $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $statement = $db->prepare('SELECT * FROM test_bbs.post WHERE id = :id ;');
+    $statement->execute([
+        ':id' => $id,
+    ]);
+    return $statement->fetch();
+}
+
+function update($id, $name, $content) {
+    $db = new PDO('mysql:host = localhost;dbname=test_bbs','root','root');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $statement = $db->prepare('UPDATE test_bbs.post SET name = :name, content = :content WHERE id = :id ;');
+    $statement->execute([
+        ':id' => $id,
+        ':name' => $name,
+        ':content' => $content,
+    ]);
+    return $statement->fetch();
 }
 ?>

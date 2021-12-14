@@ -1,5 +1,5 @@
 <?php
-namespace info;
+namespace view;
 
 function info($status) {
     echo "<h1>{$status}</h1>";
